@@ -50,4 +50,4 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name='ARK'))
 
 
-client.run('ODA2ODkxMDg0ODg1MjYyMzM2.YBwB4Q.yzJv8n6crbdGBpXQtXFR9uT5XV0')
+client.run('')
