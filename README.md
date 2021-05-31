@@ -5,3 +5,4 @@ How to use:
 .pn - список відсутніх                        
 .v a1 a2 - відмітка учневі, де a1 - це @нік, а a2 - це тип відмітки(S, extra, |, ...)  
 .va - всі відмітки за урок                                     
+invite - https://discord.com/api/oauth2/authorize?client_id=806891084885262336&permissions=8&scope=bot
