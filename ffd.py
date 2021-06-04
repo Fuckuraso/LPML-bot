@@ -14,9 +14,9 @@ client = commands.Bot(command_prefix= str(pr) )
 client.remove_command("help")
 
 @client.event
-async def on_message(message):
-    print(a)
-    if {i.lower().translate(str.maketrans('','', string.punctuation)) for i in message.content.split(' ')}.intersection(set(json.load(open('cenz.json')))) !=set():
+async def on_message(message):#фільтрація від мату, тобто якщо в повідомлені є мат то воно видалиться(якщо повідомлення написано в free folk то воно не буде видалене)
+    if str(message.channel.id)!='751731785016016960' or str(message.channel.id)!='751732195042787418'str(message.channel.id)!='751732734350721124':
+        if {i.lower().translate(str.maketrans('','', string.punctuation)) for i in message.content.split(' ')}.intersection(set(json.load(open('cenz.json')))) !=set():
             await message.delete()
     await client.process_commands(message)
 
@@ -24,7 +24,7 @@ async def on_message(message):
 @client.command()
 async def p(ctx):
     global ph
-    if time.strftime("%a")=='Tue'and time.strftime("%X")>'08:44:00'and time.strftime("%X")<'09:31:00':
+    if time.strftime("%a")=='Tue'and time.strftime("%X")>'08:44:00'and time.strftime("%X")<'09:31:00':#провірка чи зараз час уроку
         ph.append('<@%s>'%ctx.author.id)
     elif time.strftime("%a")=='Mon'and time.strftime("%X")>'09:50:00'and time.strftime("%X")<'10:35:00':
         ph.append('<@%s>'%ctx.author.id)
@@ -42,10 +42,10 @@ async def p(ctx):
         ph.append('<@%s>'%ctx.author.id)
     elif time.strftime("%a")=='Thu'and time.strftime("%X")>'15:05:00'and time.strftime("%X")<'15:50:00':
         ph.append('<@%s>'%ctx.author.id)
-    else:
+    else:#якщо ні то друкує це повідомлення
         await ctx.send('Сорі, але уроку ще нема.')
 @client.command()
-async def pk(ctx):
+async def pk(ctx):#якщо урок по півгрупах то ця команда скидає список відсутніх серед групи
     global ph
     global pa
     global pa1
@@ -111,7 +111,7 @@ async def pk(ctx):
     else:
         await ctx.send('Сорі, але уроку ще нема.')
 @client.command()
-async def pn(ctx):
+async def pn(ctx):#якщо урок всім класом то ця команда скидає відсутніх серед всього класу
     global ph
     global pa
     global pa1
@@ -128,26 +128,24 @@ async def pn(ctx):
         await ctx.send('Сорі, але уроку ще нема.')
 
 @client.command()
-async def v(ctx, a1: discord.Member, a2):
-    global vh
+async def v(ctx, a1: discord.Member, a2):#надання відміток. Працює так:
+    global vh#.v @<нік> <тип відмітки(S, extra, |, assist, ba(надати комусь роль black assist))>
     global ph
     print(ph+';')
     if ph!=[]:
-        print('first if complete')
-        if str(ctx.author.id) == '428159463002734595' or str(ctx.author.id) == '752538068938129458' or str(ctx.author.id) == '752467669831123054':
-            vh.append(str(a1) + ' надано відмітку ' + a2)
+        if str(ctx.author.id) == '428159463002734595' or str(ctx.author.id) == '752538068938129458' or str(ctx.author.id) == '752467669831123054':#провірка хто написав повідомлення 
+            vh.append(str(a1) + ' надано відмітку ' + a2)#відмітку може надати лише Прокопець, САС і Анна Слюсаренко
             await ctx.send(str(a1) + ' надано відмітку ' + a2)
-        elif a2=='ba' and str(ctx.author.id) == '428159463002734595':
+        elif a2=='ba' and str(ctx.author.id) == '428159463002734595':#надання ролі black assist
             role=ctx.guild.get_role(823463203186671657)
             await a1.add_roles(role)
-    elif ph==[]:
-        print('first elif complete')
+    elif ph==[]:#якщо уроку нема то друкується це повідомлення
         await ctx.send('Сорі, але уроку ще нема.')
     
 
 
 @client.command()
-async def va(ctx):
+async def va(ctx):#надсилання повідомлення з всіма відмітками за урок
         global vh
         k = len(vh)
         for i in range(0, k):
@@ -155,7 +153,7 @@ async def va(ctx):
             del vh[0]
             time.sleep(1)
 @client.command()
-async def c(ctx):
+async def c(ctx):#команда яка чистить список відміток і список присутніх
         global vh
         global ph
         if str(ctx.author.id) == '428159463002734595' or str(ctx.author.id) == '752538068938129458' or str(ctx.author.id) == '752467669831123054':
@@ -171,7 +169,7 @@ async def c(ctx):
 #https://discord.com/api/oauth2/authorize?client_id=842673765572804628&permissions=8&scope=bot
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game(name='ARK: Survival Evolved'))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(name='SAS-LPML'))
 
 
-client.run('c')
+client.run('Token')
