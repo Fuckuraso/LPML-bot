@@ -13,6 +13,13 @@ pa2=['<@605165277952475297>','<@724586867227623495>','<@436900440580292608>','<@
 client = commands.Bot(command_prefix= str(pr) )
 client.remove_command("help")
 
+@client.event
+async def on_message(message):
+    print(a)
+    if {i.lower().translate(str.maketrans('','', string.punctuation)) for i in message.content.split(' ')}.intersection(set(json.load(open('cenz.json')))) !=set():
+            await message.delete()
+    await client.process_commands(message)
+
 
 @client.command()
 async def p(ctx):
@@ -151,11 +158,14 @@ async def va(ctx):
 async def c(ctx):
         global vh
         global ph
-        ph=[]
-        vh=[]
-        print(ph)
-        print(vh)
-        await ctx.send('Дані були знищені.')
+        if str(ctx.author.id) == '428159463002734595' or str(ctx.author.id) == '752538068938129458' or str(ctx.author.id) == '752467669831123054':
+            ph=[]
+            vh=[]
+            print(ph)
+            print(vh)
+            await ctx.send('Дані були знищені.')
+        else:
+            await ctx.send('Сорі, але ви не можете очистити ці дані.')
 
 
 #https://discord.com/api/oauth2/authorize?client_id=842673765572804628&permissions=8&scope=bot
