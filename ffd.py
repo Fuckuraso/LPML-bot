@@ -1,7 +1,8 @@
 import discord
 import time
 from discord.ext import commands
-import os, sqlite3
+import os, json, string
+
 pr='.'
 ph=[]
 vh=[]
@@ -15,13 +16,13 @@ client.remove_command("help")
 
 @client.event
 async def on_message(message):#фільтрація від мату, тобто якщо в повідомлені є мат то воно видалиться(якщо повідомлення написано в free folk то воно не буде видалене)
-    if str(message.channel.id)!='751731785016016960' or str(message.channel.id)!='751732195042787418'str(message.channel.id)!='751732734350721124':
+    if str(message.channel.id)!='751731785016016960' or str(message.channel.id)!='751732195042787418'or str(message.channel.id)!='751732734350721124':
         if {i.lower().translate(str.maketrans('','', string.punctuation)) for i in message.content.split(' ')}.intersection(set(json.load(open('cenz.json')))) !=set():
             await message.delete()
     await client.process_commands(message)
 
 
-@client.command()
+@client.command()#відмітити свою присутність на уроці
 async def p(ctx):
     global ph
     if time.strftime("%a")=='Tue'and time.strftime("%X")>'08:44:00'and time.strftime("%X")<'09:31:00':#провірка чи зараз час уроку
