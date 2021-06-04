@@ -1,7 +1,7 @@
 import discord
 import time
 from discord.ext import commands
-import os, json, string
+import json, string
 
 pr='.'
 ph=[]
