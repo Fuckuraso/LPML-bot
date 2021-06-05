@@ -225,4 +225,4 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name='Fornite'))
 
 client.loop.create_task(Alert())
-client.run('ODA2ODkxMDg0ODg1MjYyMzM2.YBwB4Q.LpOt4ki6JGhnbfcmqTV3IsVKaac')
+client.run('token')
