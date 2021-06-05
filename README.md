@@ -1,9 +1,12 @@
 # LPML-bot
 Bot for education server in discord  
-cenz.json - файл з матюками, використовується для фільтрації повідомлень            
+cenz.json - file with "bad words"      
+file.txt - file with homewors            
 How to use:                                        
-.p - відмітити присутність учня                       
-.pn - список відсутніх                        
-.v a1 a2 - відмітка учневі, де a1 - це @нік, а a2 - це тип відмітки(S, extra, |, ...)  
-.va - всі відмітки за урок                          
-invite - https://discord.com/api/oauth2/authorize?client_id=806891084885262336&permissions=8&scope=bot
+.p - students can note their presence
+.pn - list of absent among the class                             
+.pk - list of absent among one of the subgroup
+.v a1 a2 - give іщьу mark for student, where a1 - @nickname,  a2 - type of the mark(S, extra, |, ...)  
+.va - print all marks for the lesson                           
+.hadd a1 a2 a3 - add homework, where a1 - number of homework,  a2 - numbers that are set for homework, a3 - date when homework must be done.                                  
+.hp a1 - print numbers that are set for homework, where a1 - number of homework        
