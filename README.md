@@ -1,7 +1,8 @@
 # LPML-bot
 Bot for education server in discord  
 cenz.json - file with "bad words"      
-file.txt - file with homewors            
+file.txt - file with homeworks   
+date.txt - file with date when the homeworks must be done.             
 How to use:                                        
 .p - students can note their presence
 .pn - list of absent among the class                             
